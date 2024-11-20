@@ -1,0 +1,37 @@
+{
+  "manifest_version": 3,
+  "name": "KaTeX Auto Renderer",
+  "version": "1.0",
+  "description": "Automatically renders LaTeX in the page using KaTeX.",
+  "permissions": [
+    "activeTab"
+  ],
+  "background": {
+    "service_worker": "content.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": [
+        "katex.min.js",
+        "auto-render.min.js",
+        "content.js"
+      ],
+      "css": [
+        "katex.min.css"
+      ]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "fonts/*"
+      ],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  "host_permissions": [
+    "http://*/*",
+    "https://*/*"
+  ]
+}
